@@ -52,7 +52,7 @@ export default function Footer() {
           </div>
         </div>
       </footer>
-      <div className="mt-10 flex justify-center">
+      <div className="my-10 flex justify-center">
         <p className="text-sm">© 2024 STOOR. All rights reserved.</p>
       </div>
     </>
