@@ -2,9 +2,9 @@ import { SquareCheck } from "lucide-react";
 import React from "react";
 
 interface ConfirmationProps {
-  showConfirmation: boolean;
+  showConfirmation: boolean; // Flag to determine if confirmation message should be shown
   product: {
-    title: string;
+    title: string; //Title of the product to display in the confirmation message
   };
 }
 
@@ -22,7 +22,7 @@ export const Confirmation = ({
         className="fill-[#075227] text-[#6FCF97] hidden lg:block"
         size={32}
       />
-      <p className="font-normal text-sm">
+      <p className="text-sm font-normal">
         Thank you, {product.title} has been added to your bag
       </p>
     </div>

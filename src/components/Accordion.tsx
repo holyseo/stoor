@@ -4,13 +4,14 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 import React, { useState } from "react";
 
 interface AccordionProps {
-  title: string;
-  detail: string | { rate: Number; count?: Number };
+  title: string; // Product title displayed on the accordion
+  detail: string | { rate: Number; count?: Number }; //Product rate and review count displayed on the accordion
 }
 
 const Accordion = ({ title, detail }: AccordionProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  //Function to tollge accordion open/close state
   const toggleAccordion = () => {
     setIsOpen(!isOpen);
   };
@@ -18,7 +19,7 @@ const Accordion = ({ title, detail }: AccordionProps) => {
   return (
     <div className="">
       <div
-        className=" flex justify-between rounded-md p-3 hover:bg-slate-200 cursor-pointer"
+        className="flex justify-between p-3 rounded-md cursor-pointer hover:bg-slate-200"
         onClick={toggleAccordion}
       >
         <div> {title}</div>

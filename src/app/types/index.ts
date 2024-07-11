@@ -1,3 +1,4 @@
+// Define the shape of an item
 export type Item = {
   id: string;
   title: string;
@@ -11,6 +12,7 @@ export type Item = {
   };
 };
 
+//Props definition for the ProductCard component
 export type ProductCardProps = {
   item: Item;
 };

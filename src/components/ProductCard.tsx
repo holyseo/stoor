@@ -4,10 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { Star } from "lucide-react";
 
+//Productcard component
 const ProductCard = ({ item }: ProductCardProps) => {
   const rate = Math.round(item.rating.rate);
   const stars = [];
 
+  // Generate star icons based on the rating
   for (let i = 0; i < rate; i++) {
     stars.push(
       <div key={i}>
@@ -19,9 +21,10 @@ const ProductCard = ({ item }: ProductCardProps) => {
   return (
     <div
       key={item.id}
-      className="flex flex-col items-center max-w-xs gap-5 p-4 border shadow-lg  max-h-96 border-slate-200"
+      className="flex flex-col items-center max-w-xs gap-5 p-4 border shadow-lg max-h-96 border-slate-200"
     >
-      <div className="relative  w-52 h-36 md:w-60 md:h-48">
+      {/* Product image */}
+      <div className="relative w-52 h-36 md:w-60 md:h-48">
         <Image
           src={item.image}
           alt={item.title}
@@ -29,6 +32,7 @@ const ProductCard = ({ item }: ProductCardProps) => {
           style={{ objectFit: "contain" }}
         />
       </div>
+      {/* Product title and price */}
       <div className="flex justify-between w-full text-sm font-medium ">
         <p className="has-tooltip">
           <span className="tooltip bg-[#333333e6] text-white px-2 py-1">
@@ -40,6 +44,7 @@ const ProductCard = ({ item }: ProductCardProps) => {
         </p>
         <p className="text-gray-600">£{item.price}</p>
       </div>
+      {/* Rating and review counts */}
       <div className="text-[10px] font-medium flex gap-8 items-center w-full">
         <div className="flex has-tooltip">
           <span className="px-1 mt-1 tooltip">Rating: {item.rating.rate}</span>
@@ -47,6 +52,7 @@ const ProductCard = ({ item }: ProductCardProps) => {
         </div>
         <p>from {item.rating.count} reviews</p>
       </div>
+      {/* View product button */}
       <Link
         href={`/product/${item.id}`}
         className="w-full p-2 text-sm font-medium text-center text-white bg-black"

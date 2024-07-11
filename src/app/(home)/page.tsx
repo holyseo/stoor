@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import ProductCard from "@/components/ProductCard";
 import { Item } from "../types";
 import { FetchAllProducts, FetchCateogires } from "@/components/API";
-import { LoaderPinwheel } from "lucide-react";
 import LoadingSpinner from "@/components/LoadingSpinner";
 
 function Home() {
@@ -13,17 +12,20 @@ function Home() {
   const [filteredCategory, setFilteredCategory] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
+  //Handler for category filter changes
   const handleCategoryChange = async (category: string, checked: boolean) =>
     checked
       ? setFilteredCategory((prev) => [...prev, category])
       : setFilteredCategory((prev) => prev.filter((cat) => cat !== category));
 
+  //Filter products based on selected categories
   const filteredProducts = products.filter((product) =>
     filteredCategory.length === 0
       ? true
       : filteredCategory.includes(product.category)
   );
 
+  //Fetch all products from API
   const getAllProducts = async () => {
     setLoading(true);
     const data = await FetchAllProducts();
@@ -31,6 +33,7 @@ function Home() {
     setLoading(false);
   };
 
+  //Fetch all categories from API
   const getCategories = async () => {
     setLoading(true);
     const data = await FetchCateogires();
@@ -38,6 +41,7 @@ function Home() {
     setLoading(false);
   };
 
+  //Fetch products and categories on component mount
   useEffect(() => {
     getAllProducts();
     getCategories();
@@ -45,6 +49,7 @@ function Home() {
 
   return (
     <div className="flex flex-col px-10 bg-white">
+      {/* Intro section */}
       <section className="flex flex-col items-center gap-10 mx-auto mt-10 xl:w-1/2">
         <div className="text-2xl font-medium">Our Clothing</div>
         <div className="text-sm font-normal text-center">
@@ -56,7 +61,9 @@ function Home() {
         </div>
       </section>
       <hr className="my-12" />
+      {/* Main content */}
       <main className="flex flex-col items-center gap-10 lg:gap-36 xl:gap-20 lg:flex-row lg:items-start">
+        {/* Sidebar for category filtering */}
         <aside className="flex flex-col gap-5 mb-10 text-sm font-medium lg:w-1/6">
           <h2 className="font-normal">Filter by category</h2>
           {loading ? (
@@ -81,6 +88,7 @@ function Home() {
             ))
           )}
         </aside>
+        {/* Product grid */}
         <section className="grid flex-auto gap-5 mb-10 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
           {loading ? (
             <div className="flex col-span-3 mx-auto ">

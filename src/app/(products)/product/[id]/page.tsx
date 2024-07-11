@@ -8,6 +8,7 @@ import Accordion from "@/components/Accordion";
 import { Item } from "@/app/types";
 import LoadingSpinner from "@/components/LoadingSpinner";
 
+// Page component to display product details
 const Page = ({ params }: { params: { id: string } }) => {
   const [product, setProduct] = useState<Item | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -15,6 +16,7 @@ const Page = ({ params }: { params: { id: string } }) => {
 
   const { id } = params;
 
+  //Fetch product details on component mount
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -30,11 +32,13 @@ const Page = ({ params }: { params: { id: string } }) => {
     fetchProduct();
   }, [id]);
 
+  // Handle add to bag action
   const handleAddToBag = () => {
     setShowConfirmation(true);
     setTimeout(() => setShowConfirmation(false), 5000);
   };
 
+  //Show loading spinner while data is being fetched
   if (isLoading)
     return (
       <div className="flex items-center justify-center p-20">
@@ -42,18 +46,22 @@ const Page = ({ params }: { params: { id: string } }) => {
       </div>
     );
 
+  //Show message if product not found
   if (!product) return <div>Product not found</div>;
 
   return (
     <>
+      {/* Show confirmation message on add to bag */}
       {showConfirmation && (
         <Confirmation showConfirmation={showConfirmation} product={product} />
       )}
+      {/* Main content */}
       <main className="grid grid-cols-1 lg:grid-cols-2 place-items-center bg-[#F4F4F4]">
         <section className="flex flex-col justify-between w-full p-4 bg-white shadow-lg ">
           <div className="self-end text-sm font-medium border-[#E0E0E0] border px-10 py-1 w-fit rounded-full">
             POPULAR
           </div>
+          {/* Product image section */}
           <div className="my-20 mx-auto w-full max-w-lg md:max-w-2xl lg:max-w-4xl h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] relative">
             <Image
               src={product.image}
@@ -63,6 +71,7 @@ const Page = ({ params }: { params: { id: string } }) => {
             />
           </div>
         </section>
+        {/* Product details section */}
         <section className="flex flex-col w-full col-span-1 gap-6 p-4 font-medium lg:w-2/3">
           <h1 className="mt-5 text-xl lg:text-3xl">{product.title}</h1>
           <div className="text-sm">SELECT SIZE</div>
