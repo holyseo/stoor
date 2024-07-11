@@ -59,11 +59,8 @@ function Home() {
         <aside className="mb-10 flex flex-col gap-5 lg:w-1/6 text-sm font-medium">
           <h2 className="font-normal">Filter by category</h2>
           {loading ? (
-            <div className="flex gap-5 items-center">
-              <span>
-                <LoaderPinwheel />
-              </span>
-              <span>Fetching categories...</span>
+            <div className="flex ">
+              <p>Fetching categories...</p>
             </div>
           ) : (
             categories.map((category) => (
@@ -85,11 +82,8 @@ function Home() {
         </aside>
         <section className="mb-10 flex-auto grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5">
           {loading ? (
-            <div className="flex gap-5 items-center text-2xl">
-              <span>
-                <LoaderPinwheel size={30} />
-              </span>
-              <span>Fetching products...</span>
+            <div className=" flex mx-auto col-span-3 text-xl font-semibold">
+              <div>Fetching products...</div>
             </div>
           ) : (
             filteredProducts.map((item: Item, index: number) => (

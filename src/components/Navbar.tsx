@@ -4,7 +4,7 @@ import React from "react";
 export default function Navbar() {
   return (
     <header className=" grid gap-4 lg:grid-cols-5 p-8 mb-3 text-sm place-content-center w-full bg-[#F4F4F4] text-[#353535]">
-      <div className=" order-2 lg:order-1 lg:col-span-2 flex gap-8 justify-center lg:justify-start lg:flex-row lg:gap-14 font-normal">
+      <div className=" order-2 border-y-2 py-5 my-3 lg:m-0 lg:border-0 lg:p-1 lg:order-1 lg:col-span-2 flex gap-8 justify-center lg:justify-start lg:flex-row lg:gap-14 font-normal">
         <Link href={"/"}>
           <p className="">HOME</p>
         </Link>

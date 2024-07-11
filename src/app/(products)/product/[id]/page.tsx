@@ -36,10 +36,11 @@ const Page = ({ params }: { params: { id: string } }) => {
 
   if (isLoading)
     return (
-      <div className="flex justify-center items-center p-20 font-bold">
+      <div className="flex justify-center items-center text-xl p-20 font-bold">
         Loading...
       </div>
     );
+
   if (!product) return <div>Product not found</div>;
 
   return (
