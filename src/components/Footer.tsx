@@ -35,9 +35,12 @@ export default function Footer() {
         <div className="w-2/3 lg:w-4/5 mx-auto flex flex-col gap-5 justify-between">
           <h3 className="font-bold text-lg ">STOOR</h3>
           <p>
-            Explore STOOR for the latest in fashion and technology. Discover
-            trendy clothing and cutting-edge gadgets. Shop now for fast shipping
-            and excellent customer service.
+            Lorem ipsum dolor sit amet consectetur. Nullam leo condimentum
+            turpis aliquet. Fermentum purus amet vitae sed nam imperdiet. Sit
+            cursus sed commodo aliquet ultricies mi volutpat tortor at. A
+            gravida enim ut quis et in lectus. Dolor tortor facilisi egestas
+            faucibus nulla. Nibh accumsan felis tempor convallis nunc porta
+            integer.
           </p>
         </div>
         <div className="w-2/3 mx-auto flex flex-col gap-2 justify-between">
@@ -53,7 +56,9 @@ export default function Footer() {
         </div>
       </footer>
       <div className="my-10 flex justify-center">
-        <p className="text-sm">© 2024 STOOR. All rights reserved.</p>
+        <p className="text-sm">
+          © {new Date().getFullYear()} STOOR. All rights reserved.
+        </p>
       </div>
     </>
   );

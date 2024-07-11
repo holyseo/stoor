@@ -3,7 +3,12 @@
 import { ChevronDown, ChevronUp } from "lucide-react";
 import React, { useState } from "react";
 
-const Accordion = ({ title, detail }) => {
+interface AccordionProps {
+  title: string;
+  detail: string | { rate: Number; count?: Number };
+}
+
+const Accordion = ({ title, detail }: AccordionProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleAccordion = () => {

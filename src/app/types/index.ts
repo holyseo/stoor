@@ -6,8 +6,8 @@ export type Item = {
   description: string;
   image: string;
   rating: {
-    rate: Number;
-    count: Number;
+    rate: number;
+    count: number;
   };
 };
 

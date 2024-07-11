@@ -2,9 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { SquareCheck } from "lucide-react";
 import { FetchProductDetails } from "@/components/API";
-
+import { Confirmation } from "../../../../components/Confirmation";
 import Accordion from "@/components/Accordion";
 import { Item } from "@/app/types";
 
@@ -32,28 +31,24 @@ const Page = ({ params }: { params: { id: string } }) => {
 
   const handleAddToBag = () => {
     setShowConfirmation(true);
-    setTimeout(() => setShowConfirmation(false), 2500);
+    setTimeout(() => setShowConfirmation(false), 5000);
   };
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading)
+    return (
+      <div className="flex justify-center items-center p-20 font-bold">
+        Loading...
+      </div>
+    );
   if (!product) return <div>Product not found</div>;
 
   return (
     <>
       {showConfirmation && (
-        <div
-          className={`absolute w-full h-20 bg-[#6FCF97] flex gap-8 justify-center items-center text-[#075227] ${
-            showConfirmation ? " animate-fade-in" : "animate-fade-out"
-          }`}
-        >
-          <SquareCheck className="fill-[#075227] text-[#6FCF97]" size={32} />
-          <p className="font-normal text-sm">
-            Thank you, {product.title} has been added to your bag
-          </p>
-        </div>
+        <Confirmation showConfirmation={showConfirmation} product={product} />
       )}
-      <div className="grid grid-cols-1 lg:grid-cols-2 place-items-center bg-[#F4F4F4]">
-        <div className=" shadow-lg flex flex-col w-full justify-between bg-white p-4">
+      <main className="grid grid-cols-1 lg:grid-cols-2 place-items-center bg-[#F4F4F4]">
+        <section className=" shadow-lg flex flex-col w-full justify-between bg-white p-4">
           <div className="self-end text-sm font-medium border-[#E0E0E0] border px-10 py-1 w-fit rounded-full">
             POPULAR
           </div>
@@ -65,8 +60,8 @@ const Page = ({ params }: { params: { id: string } }) => {
               objectFit="contain"
             />
           </div>
-        </div>
-        <div className="col-span-1 font-medium flex flex-col gap-6 w-full lg:w-2/3 p-4">
+        </section>
+        <section className="col-span-1 font-medium flex flex-col gap-6 w-full lg:w-2/3 p-4">
           <h1 className="text-xl lg:text-3xl mt-5">{product.title}</h1>
           <div className="text-sm">SELECT SIZE</div>
           <select
@@ -90,8 +85,8 @@ const Page = ({ params }: { params: { id: string } }) => {
             title="DELIVERY OPTIONS"
             detail="Free shipping available in the UK"
           />
-        </div>
-      </div>
+        </section>
+      </main>
     </>
   );
 };
