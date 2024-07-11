@@ -81,6 +81,9 @@ const Page = ({ params }: { params: { id: string } }) => {
           >
             <span className="text-sm font-medium">ADD TO BAG</span>
           </button>
+          <div className="my-3 text-lg text-right ">
+            PRICE: £{product.price}
+          </div>
           <Accordion title="DESCRIPTION" detail={product.description} />
           <Accordion title="PRODUCT RATING" detail={product.rating} />
           <Accordion
