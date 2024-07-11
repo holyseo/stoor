@@ -6,6 +6,7 @@ import { FetchProductDetails } from "@/components/API";
 import { Confirmation } from "../../../../components/Confirmation";
 import Accordion from "@/components/Accordion";
 import { Item } from "@/app/types";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 const Page = ({ params }: { params: { id: string } }) => {
   const [product, setProduct] = useState<Item | null>(null);
@@ -37,10 +38,7 @@ const Page = ({ params }: { params: { id: string } }) => {
   if (isLoading)
     return (
       <div className="flex items-center justify-center p-20">
-        <div className="relative w-12 h-12">
-          <div className="absolute top-0 left-0 w-full h-full border-4 border-gray-200 rounded-full"></div>
-          <div className="absolute top-0 left-0 w-full h-full border-4 border-blue-500 rounded-full animate-spin border-t-transparent"></div>
-        </div>
+        <LoadingSpinner />
       </div>
     );
 

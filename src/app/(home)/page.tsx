@@ -5,6 +5,7 @@ import ProductCard from "@/components/ProductCard";
 import { Item } from "../types";
 import { FetchAllProducts, FetchCateogires } from "@/components/API";
 import { LoaderPinwheel } from "lucide-react";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 function Home() {
   const [categories, setCategories] = useState<string[]>([]);
@@ -83,10 +84,7 @@ function Home() {
         <section className="grid flex-auto gap-5 mb-10 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
           {loading ? (
             <div className="flex col-span-3 mx-auto ">
-              <div className="relative w-12 h-12">
-                <div className="absolute top-0 left-0 w-full h-full border-4 border-gray-200 rounded-full"></div>
-                <div className="absolute top-0 left-0 w-full h-full border-4 border-blue-500 rounded-full animate-spin border-t-transparent"></div>
-              </div>
+              <LoadingSpinner />
             </div>
           ) : (
             filteredProducts.map((item: Item, index: number) => (
