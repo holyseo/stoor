@@ -36,8 +36,11 @@ const Page = ({ params }: { params: { id: string } }) => {
 
   if (isLoading)
     return (
-      <div className="flex justify-center items-center text-xl p-20 font-bold">
-        Loading...
+      <div className="flex items-center justify-center p-20">
+        <div className="relative w-12 h-12">
+          <div className="absolute top-0 left-0 w-full h-full border-4 border-gray-200 rounded-full"></div>
+          <div className="absolute top-0 left-0 w-full h-full border-4 border-blue-500 rounded-full animate-spin border-t-transparent"></div>
+        </div>
       </div>
     );
 
@@ -49,7 +52,7 @@ const Page = ({ params }: { params: { id: string } }) => {
         <Confirmation showConfirmation={showConfirmation} product={product} />
       )}
       <main className="grid grid-cols-1 lg:grid-cols-2 place-items-center bg-[#F4F4F4]">
-        <section className=" shadow-lg flex flex-col w-full justify-between bg-white p-4">
+        <section className="flex flex-col justify-between w-full p-4 bg-white shadow-lg ">
           <div className="self-end text-sm font-medium border-[#E0E0E0] border px-10 py-1 w-fit rounded-full">
             POPULAR
           </div>
@@ -62,13 +65,13 @@ const Page = ({ params }: { params: { id: string } }) => {
             />
           </div>
         </section>
-        <section className="col-span-1 font-medium flex flex-col gap-6 w-full lg:w-2/3 p-4">
-          <h1 className="text-xl lg:text-3xl mt-5">{product.title}</h1>
+        <section className="flex flex-col w-full col-span-1 gap-6 p-4 font-medium lg:w-2/3">
+          <h1 className="mt-5 text-xl lg:text-3xl">{product.title}</h1>
           <div className="text-sm">SELECT SIZE</div>
           <select
             name="size"
             id="size"
-            className="block p-5 w-full border-slate-300 border"
+            className="block w-full p-5 border border-slate-300"
           >
             <option value="small">SMALL</option>
             <option value="medium">MEDIUM</option>
@@ -76,7 +79,7 @@ const Page = ({ params }: { params: { id: string } }) => {
           </select>
           <button
             onClick={handleAddToBag}
-            className="bg-black text-white w-full py-5 text-center"
+            className="w-full py-5 text-center text-white bg-black"
           >
             <span className="text-sm font-medium">ADD TO BAG</span>
           </button>

@@ -43,10 +43,10 @@ function Home() {
   }, []);
 
   return (
-    <div className="bg-white flex flex-col px-10">
-      <section className="flex flex-col mx-auto items-center xl:w-1/2 mt-10 gap-10">
+    <div className="flex flex-col px-10 bg-white">
+      <section className="flex flex-col items-center gap-10 mx-auto mt-10 xl:w-1/2">
         <div className="text-2xl font-medium">Our Clothing</div>
-        <div className="text-sm text-center font-normal">
+        <div className="text-sm font-normal text-center">
           Lorem ipsum dolor sit amet consectetur. Nullam leo condimentum turpis
           aliquet. Fermentum purus amet vitae sed nam imperdiet. Sit cursus sed
           commodo aliquet ultricies mi volutpat tortor at. A gravida enim ut
@@ -56,7 +56,7 @@ function Home() {
       </section>
       <hr className="my-12" />
       <main className="flex flex-col items-center gap-10 lg:gap-36 xl:gap-20 lg:flex-row lg:items-start">
-        <aside className="mb-10 flex flex-col gap-5 lg:w-1/6 text-sm font-medium">
+        <aside className="flex flex-col gap-5 mb-10 text-sm font-medium lg:w-1/6">
           <h2 className="font-normal">Filter by category</h2>
           {loading ? (
             <div className="flex ">
@@ -80,10 +80,13 @@ function Home() {
             ))
           )}
         </aside>
-        <section className="mb-10 flex-auto grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5">
+        <section className="grid flex-auto gap-5 mb-10 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
           {loading ? (
-            <div className=" flex mx-auto col-span-3 text-xl font-semibold">
-              <div>Fetching products...</div>
+            <div className="flex col-span-3 mx-auto ">
+              <div className="relative w-12 h-12">
+                <div className="absolute top-0 left-0 w-full h-full border-4 border-gray-200 rounded-full"></div>
+                <div className="absolute top-0 left-0 w-full h-full border-4 border-blue-500 rounded-full animate-spin border-t-transparent"></div>
+              </div>
             </div>
           ) : (
             filteredProducts.map((item: Item, index: number) => (
