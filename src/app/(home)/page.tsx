@@ -55,8 +55,8 @@ function Home() {
         </div>
       </section>
       <hr className="my-12" />
-      <main className="flex flex-col items-center gap-5 lg:flex-row lg:items-start">
-        <aside className="mb-10 flex flex-col gap-5 lg:w-1/5 text-sm font-medium">
+      <main className="flex flex-col items-center gap-10 lg:gap-36 xl:gap-20 lg:flex-row lg:items-start">
+        <aside className="mb-10 flex flex-col gap-5 lg:w-1/6 text-sm font-medium">
           <h2 className="font-normal">Filter by category</h2>
           {loading ? (
             <div className="flex gap-5 items-center">
